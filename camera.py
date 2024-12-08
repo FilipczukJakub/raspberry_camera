@@ -12,14 +12,19 @@ image = None
 async def echo(websocket):
     global global_stop
     global image
+    print("connected")
     while not global_stop:
-        local_image = image
-        buffer = BytesIO()
-        local_image.save(buffer, format='JPEG')
-        image_bytes = buffer.getvalue()
-        buffer.close()
-        await websocket.send(image_bytes)
-        await asyncio.sleep(0.2)
+        try:
+            local_image = image
+            buffer = BytesIO()
+            local_image.save(buffer, format='JPEG', quality=50)
+            image_bytes = buffer.getvalue()
+            buffer.close()
+            await websocket.send(image_bytes)
+            await asyncio.sleep(0.05)
+        except:
+            print("disconnected...")
+            break
 
 def camera_feed():
     global global_stop
@@ -32,7 +37,7 @@ def camera_feed():
     picam2.start()
     while not global_stop:
         image = picam2.capture_image()
-        time.sleep(0.2)
+        time.sleep(0.05)
 
 async def server(ip,stop):
     async with websockets.serve(echo,'0.0.0.0',8767):
