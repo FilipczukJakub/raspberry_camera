@@ -30,8 +30,8 @@ def camera_feed():
     global global_stop
     global image
     picam2 = Picamera2()
-    picam2.start_preview(Preview.QTGL)
-    preview_config = picam2.create_preview_configuration()
+    #picam2.start_preview(Preview.QTGL)
+    #preview_config = picam2.create_preview_configuration()
     capture_config = picam2.create_preview_configuration()
     picam2.configure(capture_config)
     picam2.start()
