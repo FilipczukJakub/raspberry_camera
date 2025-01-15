@@ -23,7 +23,7 @@ body {margin: 0px;}
 </style>
 <title>picamera2 MJPEG streaming demo</title>
 </head>
-<body margin="0px">
+<body>
 <img src="stream.mjpg" width="100%" height="100%" />
 </body>
 </html>
