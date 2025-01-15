@@ -18,6 +18,9 @@ from picamera2.outputs import FileOutput
 PAGE = """\
 <html>
 <head>
+<style>
+body {margin: 0px;}
+</style>
 <title>picamera2 MJPEG streaming demo</title>
 </head>
 <body margin="0px">
